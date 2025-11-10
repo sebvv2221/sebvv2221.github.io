@@ -2,19 +2,27 @@
 layout: default
 ---
 
-<section class="intro">
-  <p>Welcome. This is my research & systems blog — minimal, text-focused, and evolving.</p>
-</section>
+<header class="site-header">
+  <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
+  {% if page.content %}
+    <div class="site-intro">
+      {{ page.content | markdownify }}
+    </div>
+  {% elsif site.description %}
+    <p class="site-description">{{ site.description }}</p>
+  {% endif %}
+</header>
 
-<section class="posts">
-  <h1>{{ site.title }}</h1>
+<main class="post-list">
   <ul>
     {% for post in site.posts %}
       <li>
-        <span>{{ post.date | date: "%b %d, %Y" }}</span> –
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a><br/>
-        <small>{{ post.excerpt | strip_html | truncate: 150 }}</small>
+        <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+        <div class="post-meta">
+          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
+        </div>
       </li>
     {% endfor %}
   </ul>
-</section>
+</main>
