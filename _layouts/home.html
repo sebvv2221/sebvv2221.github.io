@@ -1,19 +1,28 @@
 ---
 layout: default
 ---
-<section class="home">
-  {{ content }}
-  {% if site.posts.size > 0 %}
-  <section class="post-list">
-    {% for post in site.posts %}
-    <article>
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p><small>{{ post.date | date: "%B %-d, %Y" }}</small></p>
-      {% if post.excerpt %}
-      <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      {% endif %}
-    </article>
-    {% endfor %}
-  </section>
+
+<header class="site-header">
+  <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
+  {% if page.content %}
+    <div class="site-intro">
+      {{ page.content | markdownify }}
+    </div>
+  {% elsif site.description %}
+    <p class="site-description">{{ site.description }}</p>
   {% endif %}
-</section>
+</header>
+
+<main class="post-list">
+  <ul>
+    {% for post in site.posts %}
+      <li>
+        <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+        <div class="post-meta">
+          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</main>
