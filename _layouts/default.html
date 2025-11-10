@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
-</head>
-<body>
-  <main>
-    {{ content }}
-  </main>
-</body>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    <title>{% if page.title %}{{ page.title }}{% unless page.title == site.title %} - {{ site.title }}{% endunless %}{% else %}{{ site.title }}{% endif %}</title>
+    <link rel="stylesheet" href="{{ "/style.css" | relative_url }}">
   </head>
   <body>
-    <main>
-      {{ content }}
-    </main>
+    {{ content }}
   </body>
 </html>
