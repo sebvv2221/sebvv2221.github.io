@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }}{% unless page.title == site.title %} - {{ site.title }}{% endunless %}{% else %}{{ site.title }}{% endif %}</title>
     <link rel="stylesheet" href="{{ "/style.css" | relative_url }}">
   </head>
   <body>
