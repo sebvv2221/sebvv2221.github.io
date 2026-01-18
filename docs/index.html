@@ -15,14 +15,19 @@
     <script>
       (function () {
         var storageKey = "sebastian-theme";
-        var stored = localStorage.getItem(storageKey);
+        var stored = null;
+        try {
+          stored = localStorage.getItem(storageKey);
+        } catch (error) {
+          stored = null;
+        }
         var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         var theme = stored === "light" || stored === "dark" ? stored : prefersDark ? "dark" : "light";
         document.documentElement.classList.remove("light", "dark");
         document.documentElement.classList.add(theme);
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-BQkgksiH.js"></script>
+    <script type="module" crossorigin src="/assets/index-M5nJ2X0I.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-6zfHra94.css">
   </head>
   <body>

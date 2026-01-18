@@ -16,9 +16,13 @@ const getInitialTheme = (): Theme => {
     return "light";
   }
 
-  const stored = localStorage.getItem(storageKey);
-  if (stored === "light" || stored === "dark") {
-    return stored;
+  try {
+    const stored = localStorage.getItem(storageKey);
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+  } catch (error) {
+    // Ignore storage errors and fall back to system preference.
   }
 
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -33,7 +37,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     root.classList.remove("light", "dark");
     root.classList.add(theme);
     root.style.colorScheme = theme;
-    localStorage.setItem(storageKey, theme);
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch (error) {
+      // Ignore storage errors (e.g., blocked storage).
+    }
   }, [theme]);
 
   const value = useMemo(
