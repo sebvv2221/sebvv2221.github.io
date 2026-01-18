@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>(C) Sebastian Vo - 2026</p>
           <div className="flex flex-wrap gap-4">
-            <a href="mailto:hello@sebastianvo.com">Email</a>
+            <a href="mailto:seb.vv2221@gmail.com">Email</a>
             <a href="https://github.com/sebvv2221" target="_blank" rel="noreferrer">
               GitHub
             </a>
