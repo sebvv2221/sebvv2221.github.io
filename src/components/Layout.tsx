@@ -71,15 +71,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <footer className="mx-auto mt-16 w-full max-w-5xl px-6 pb-12">
         <div className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>(C) Sebastian Vo - 2026</p>
-          <div className="flex flex-wrap gap-4">
-            <a href="mailto:seb.vv2221@gmail.com">Email</a>
-            <a href="https://x.com/sebastianvv2221" target="_blank" rel="noreferrer">
-              Twitter
-            </a>
-            <a href="https://github.com/sebvv2221" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-          </div>
         </div>
       </footer>
     </div>
