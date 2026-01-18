@@ -2,21 +2,39 @@
 layout: default
 ---
 
-<header class="site-header">
-  <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
-  {% if page.content %}
-    <div class="site-intro">
-      {{ page.content | markdownify }}
+{% assign latest = site.posts.first %}
+<section class="hero{% if latest %} has-latest{% endif %}">
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Research notebook</p>
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <div class="hero-lede">
+      {{ content }}
     </div>
-  {% elsif site.description %}
-    <p class="site-description">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ "/about/" | relative_url }}">About</a>
+      <a class="button ghost" href="#posts">Latest notes</a>
+    </div>
+  </div>
+  {% if latest %}
+    <div class="hero-latest">
+      <p class="hero-latest-label">Latest note</p>
+      <a class="hero-latest-title" href="{{ latest.url | relative_url }}">{{ latest.title }}</a>
+      <p class="hero-latest-excerpt">{{ latest.excerpt | strip_html | strip_newlines | truncate: 140 }}</p>
+      <p class="hero-latest-date">{{ latest.date | date: "%b %-d, %Y" }}</p>
+    </div>
   {% endif %}
-</header>
+</section>
 
-<main class="post-list">
+<section class="post-list" id="posts">
+  <div class="section-heading">
+    <h2>Latest notes</h2>
+    {% if site.description %}
+      <p>{{ site.description }}</p>
+    {% endif %}
+  </div>
   <ul>
     {% for post in site.posts %}
-      <li>
+      <li class="post-card">
         <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         <div class="post-meta">
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -25,4 +43,4 @@ layout: default
       </li>
     {% endfor %}
   </ul>
-</main>
+</section>
