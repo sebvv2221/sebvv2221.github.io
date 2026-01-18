@@ -183,6 +183,14 @@
     color: var(--color-accent-strong);
   }
 
+  .icon-button {
+    @apply inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted shadow-soft transition-transform duration-200 hover:-translate-y-0.5 hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+
+  .icon-button svg {
+    @apply h-4 w-4;
+  }
+
   .pill {
     @apply inline-flex items-center rounded-full border border-border px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em];
     color: var(--color-muted);

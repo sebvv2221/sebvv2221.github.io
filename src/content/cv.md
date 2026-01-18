@@ -23,4 +23,4 @@ Research on ML systems, repairability, and recurrence modeling for real-world lo
 
 ## Contact
 
-Email: [hello@sebastianvo.com](mailto:hello@sebastianvo.com)
+Email: [seb.vv2221@gmail.com](mailto:seb.vv2221@gmail.com)
