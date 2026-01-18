@@ -15,7 +15,7 @@ export default function Post() {
   }
 
   return (
-    <article className="card p-8 md:p-10">
+    <article className="card mx-auto w-full max-w-4xl p-8 md:p-10">
       <div className="flex flex-col gap-4">
         <p className="text-xs uppercase tracking-[0.2em] text-muted">
           {formatDate(post.date)}

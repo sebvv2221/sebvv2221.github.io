@@ -27,7 +27,7 @@ export default function About() {
   usePageMeta({ title: "About" });
 
   return (
-    <article className="card p-8 md:p-10">
+    <article className="card mx-auto w-full max-w-4xl p-8 md:p-10">
       <div>
         <p className="kicker">About</p>
         <h1 className="mt-4 font-display text-4xl text-ink">Sebastian Vo</h1>

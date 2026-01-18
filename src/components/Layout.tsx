@@ -13,7 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <header className="md:sticky md:top-6 z-40">
-        <div className="mx-auto w-full max-w-3xl px-6 pt-6">
+        <div className="mx-auto w-full max-w-5xl px-6 pt-6">
           <div className="flex flex-col gap-4 rounded-3xl border border-border bg-nav px-6 py-4 shadow-soft backdrop-blur sm:flex-row sm:items-center sm:justify-between">
             <Link
               to="/"
@@ -35,10 +35,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
-      <main id="main-content" className="mx-auto w-full max-w-3xl px-6 pt-10">
+      <main id="main-content" className="mx-auto w-full max-w-5xl px-6 pt-10">
         {children}
       </main>
-      <footer className="mx-auto mt-16 w-full max-w-3xl px-6 pb-12">
+      <footer className="mx-auto mt-16 w-full max-w-5xl px-6 pb-12">
         <div className="flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>(C) Sebastian Vo - 2026</p>
           <div className="flex flex-wrap gap-4">
