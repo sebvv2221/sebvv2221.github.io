@@ -33,14 +33,15 @@ export default function About() {
         <h1 className="mt-4 font-display text-4xl text-ink">Sebastian Vo</h1>
         <p className="mt-4 text-lg text-muted">
           I am a University of Florida researcher focused on ML systems, repairability, and
-          recurrence modeling. The JRC work centers on how log hygiene, target design, and
-          evaluation boundaries shape what we believe about reliability in the field.
+          recurrence modeling. The JRC work asks a simple question: after a repair, how often
+          does the same failure come back, and can we build targets that reflect that reality
+          without leaking future data?
         </p>
         <p className="mt-4 text-sm text-muted">
-          The current codebase includes a full pipeline: bronze and silver data layers, feature
-          engineering for shop context and diagnostics, leak-safe world splits, recurrence index
-          construction, and a benchmark suite that emits hashed artifacts with reproducible run
-          metadata. This site captures the reasoning behind those decisions.
+          The project reframes cost prediction as a supporting signal and makes recurrence the
+          primary target. It enforces strict time ordering, VIN disjointness for cold worlds, and
+          reproducible artifacts via content hashing. The codebase is a full pipeline from raw
+          logs to benchmarked recurrence scores.
         </p>
       </div>
 
@@ -53,8 +54,8 @@ export default function About() {
           <div className="card bg-card-alt p-5 text-sm text-muted">
             <p className="text-ink">Leak-safe target design</p>
             <p className="mt-2">
-              Rolling baselines, recurrence windows, and guardrails that prevent future leakage
-              from influencing training targets.
+              Rolling baselines, recurrence windows, and prediction-time policies that prevent
+              future leakage from influencing training targets.
             </p>
           </div>
           <div className="card bg-card-alt p-5 text-sm text-muted">
@@ -100,6 +101,26 @@ export default function About() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="mt-10 grid gap-4">
+        <div>
+          <p className="kicker">Evaluation philosophy</p>
+          <h2 className="section-title">What I try to prove</h2>
+        </div>
+        <div className="card bg-card-alt p-5 text-sm text-muted">
+          <p className="text-ink">Reliability over price</p>
+          <p className="mt-2">
+            Cost is noisy and easy to game. Recurrence is harder to fake and aligns with
+            durability. Baseline cost models exist to explain away scale, not to define success.
+          </p>
+        </div>
+        <div className="card bg-card-alt p-5 text-sm text-muted">
+          <p className="text-ink">Leakage is the main enemy</p>
+          <p className="mt-2">
+            If future data can slip into training, the metrics stop meaning anything. Every split
+            and feature is designed to respect prediction time.
+          </p>
         </div>
       </section>
     </article>

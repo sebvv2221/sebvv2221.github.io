@@ -22,8 +22,8 @@ export default function Hero({
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted">
           I build leak-safe targets, recurrence indices, and benchmark suites for real-world
-          automotive repair logs. This site tracks the research, systems design, and
-          tooling that keep reliability work reproducible.
+          automotive repair logs. The JRC project turns messy field data into reproducible
+          signals with strict time windows, VIN disjointness, and artifact hashing.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/about" className="btn btn-primary">

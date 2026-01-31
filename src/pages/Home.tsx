@@ -28,30 +28,27 @@ export default function Home() {
           <h2 className="section-title">JRC repairability research</h2>
           <p className="mt-3 text-sm text-muted">
             The JRC project models how often repairs recur after a fix, instead of optimizing on
-            cost alone. The codebase builds leak-safe targets, recurrence indices, and benchmark
-            slices that let us evaluate models on clean temporal splits.
+            cost alone. It introduces leak-safe world definitions, a recurrence index, and a
+            benchmark suite that lets you compare recurrence signals against proxy scores and
+            baselines on clean temporal splits.
           </p>
           <div className="mt-6 grid gap-3 text-sm text-muted">
             <div className="card bg-card-alt p-4">
-              <p className="text-ink">Leak-safe targets</p>
-              <p className="mt-1 text-xs">
-                World definitions enforce time ordering and VIN disjointness. Targets are computed
-                from rolling windows and validated per year.
-              </p>
+              <p className="text-ink">What exists now</p>
+              <ul className="mt-2 grid gap-1 text-xs">
+                <li>Bronze and silver layers with schema checks and deterministic ordering.</li>
+                <li>Feature builders for repair code hierarchy, shop tiers, seasonality, diagnostics.</li>
+                <li>World A/B/C split logic with VIN disjointness and prediction-time policies.</li>
+                <li>Rolling baseline v2 for expected cost and residual targets.</li>
+              </ul>
             </div>
             <div className="card bg-card-alt p-4">
-              <p className="text-ink">Recurrence index</p>
-              <p className="mt-1 text-xs">
-                A stable risk score derived from repair codes, shop context, and lag-safe
-                aggregates. Outputs include calibration metrics and benchmark slices.
-              </p>
-            </div>
-            <div className="card bg-card-alt p-4">
-              <p className="text-ink">Benchmark suite</p>
-              <p className="mt-1 text-xs">
-                Side-by-side evaluation of JRC proxy scores, recurrence scores, and baseline
-                models with run metadata and artifact hashing.
-              </p>
+              <p className="text-ink">What gets shipped</p>
+              <ul className="mt-2 grid gap-1 text-xs">
+                <li>Recurrence scores and calibration metrics per world.</li>
+                <li>Benchmark slices for JRC proxy comparisons.</li>
+                <li>Run metadata with content hashes for every artifact.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -88,7 +85,7 @@ export default function Home() {
             <p className="kicker">Current questions</p>
             <ul className="mt-3 grid gap-2 text-sm text-muted">
               <li>How sensitive is recurrence risk to signature drift?</li>
-              <li>Which baseline features stay robust as shops change mix?</li>
+              <li>Which baseline features stay robust as shop mixes shift?</li>
               <li>What is the smallest benchmark that still catches leakage?</li>
             </ul>
           </div>

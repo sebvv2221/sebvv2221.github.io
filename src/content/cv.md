@@ -9,22 +9,27 @@ ML systems, repairability modeling, and recurrence targets for real-world automo
 - University of Florida, PhD Researcher (ML Systems)
 - University of Florida, MS in Computer Science
 
-## Research Summary
+## Research Statement
 
-I build end-to-end reliability pipelines that start with messy field logs and end with leak-safe, reproducible targets. The JRC project emphasizes:
+I build reliability pipelines that start with raw field logs and end with leak-safe recurrence
+targets. The JRC project treats recurrence risk as the primary metric for repairability, with
+cost and duration models serving as baselines to explain scale effects. The core work is building
+infrastructure that keeps those targets reproducible across years of log drift.
 
-- Recurrence-based targets that reward durable fixes over cost-only optimization.
-- Rolling baselines that respect time order and avoid leakage.
-- Benchmark suites that compare proxy scores, recurrence indices, and baselines.
-- Artifact hashing and run metadata to keep experiments reproducible.
+## Methods & Systems
 
-## Selected Project Components
+- Bronze and silver layers with schema validation, dtype normalization, and deterministic ordering.
+- Feature engineering for repair code hierarchy, shop tier inference, seasonality, and diagnostics.
+- World A/B/C definitions with explicit prediction time and VIN disjointness for cold starts.
+- Rolling baseline v2 to estimate expected cost without leaking future data.
+- Recurrence index scoring with per-world calibration metrics and benchmark slices.
+- Run metadata and artifact hashing to trace every output to its inputs.
 
-- Data ingestion with bronze/silver layers, deterministic ordering, and schema validation.
-- Feature engineering for repair code hierarchy, shop tier, seasonality, and diagnostics.
-- World A/B/C splits with VIN disjointness and explicit prediction-time policies.
-- Recurrence index construction with calibration, bootstrap confidence, and per-world metrics.
-- JRC proxy scoring and benchmark slice construction for model comparisons.
+## Selected Outputs
+
+- Recurrence scores and calibration metrics per world.
+- Benchmark suite comparing recurrence index, JRC proxy scores, and baselines.
+- Content-hashed artifacts with reproducible run IDs.
 
 ## Contact
 
