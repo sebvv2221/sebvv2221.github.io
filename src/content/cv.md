@@ -6,7 +6,7 @@ Sebastian Vo
 ## Education
 
 University of Florida, Gainesville, FL  
-Bachelor of Science in Computer Science and Statistics | GPA: 3.3  
+Bachelor of Science in Computer Science and Statistics
 Expected April 2027  
 Relevant Coursework: Computer Systems and Systems Programming, Data Structures and Algorithms,
 Operating Systems, Databases, Distributed Systems, Computer Networks (ongoing)
