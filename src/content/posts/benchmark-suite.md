@@ -30,6 +30,7 @@ bench = scores ⨝ base on record_id (one-to-one)
 
 Any overlap that breaks one-to-one mapping is treated as a data quality error, not a warning.
 
+<<<<<<< HEAD
 ### Pseudo-code (benchmark build)
 
 ```text
@@ -50,6 +51,8 @@ if jrc_proxy:
     bench = merge(bench, jrc, on="record_id", validate="one_to_one")
 ```
 
+=======
+>>>>>>> 2beec16 (Update 4)
 ## Coverage thresholds
 
 Metrics are only reported if coverage is high enough to be meaningful:
@@ -73,6 +76,7 @@ The suite runs per world:
 
 This makes it explicit whether gains are due to leak-free generalization or data overlap.
 
+<<<<<<< HEAD
 ### Output artifacts
 
 ```text
@@ -83,6 +87,8 @@ reports/jrc_omi_comparison/
   performance_table__A_cold.csv
 ```
 
+=======
+>>>>>>> 2beec16 (Update 4)
 ## Why it matters
 
 Without a benchmark, recurrence scores can look good even when leakage is present. The suite

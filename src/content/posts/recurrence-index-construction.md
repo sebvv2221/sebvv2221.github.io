@@ -19,6 +19,7 @@ The index uses features that are available at prediction time:
 - Lag-safe aggregates computed only on past data.
 - Diagnostic flags derived from normalized repair descriptions.
 
+<<<<<<< HEAD
 ### Baseline feature list (v2)
 
 ```text
@@ -32,6 +33,8 @@ has_dtc_flag
 diagnostic_required
 ```
 
+=======
+>>>>>>> 2beec16 (Update 4)
 ## Record identity
 
 Every row needs a deterministic key before any split logic. The pipeline builds a `record_id`
@@ -56,6 +59,7 @@ For each target year:
 This gives a clean, year-by-year view of performance and avoids future leakage. If a year does
 not meet minimum training size, it is skipped rather than padded.
 
+<<<<<<< HEAD
 ### Pseudo-code (rolling construction)
 
 ```text
@@ -81,6 +85,8 @@ for target_year in years:
     preds = expm1(model.predict(test[baseline_features]))
 ```
 
+=======
+>>>>>>> 2beec16 (Update 4)
 ### Baseline v2 (expected cost)
 
 The baseline model is a rolling, lag-safe estimator that explains scale and removes trivial
@@ -117,6 +123,7 @@ recurrence = 1 if a matching failure signature occurs within 90 days of job star
 This label is computed only from data available after the repair window closes, and the world
 split ensures training rows never include future test events.
 
+<<<<<<< HEAD
 ### Signature matching
 
 The signature is intentionally conservative:
@@ -127,6 +134,8 @@ signature = (repair_code_lvl1, class_desc, shop_tier, diagnostic_flag)
 
 This reduces false matches while keeping the label stable as text fields drift.
 
+=======
+>>>>>>> 2beec16 (Update 4)
 ## Leakage safeguards
 
 The pipeline enforces:
