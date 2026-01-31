@@ -19,6 +19,19 @@ The index uses features that are available at prediction time:
 - Lag-safe aggregates computed only on past data.
 - Diagnostic flags derived from normalized repair descriptions.
 
+### Baseline feature list (v2)
+
+```text
+median_hours_code_past_v2
+shop_hours_median_v2
+class_hours_median_v2
+vehicle_age
+shop_tier
+warranty_remaining_frac
+has_dtc_flag
+diagnostic_required
+```
+
 ## Record identity
 
 Every row needs a deterministic key before any split logic. The pipeline builds a `record_id`
@@ -42,6 +55,31 @@ For each target year:
 
 This gives a clean, year-by-year view of performance and avoids future leakage. If a year does
 not meet minimum training size, it is skipped rather than padded.
+
+### Pseudo-code (rolling construction)
+
+```text
+for target_year in years:
+    train = df[year < target_year]
+    test  = df[year == target_year]
+    if len(train) < min_train_size: continue
+
+    # recompute aggregates using train only
+    code_hours  = median(hours by repair_code_lvl1 in train)
+    shop_hours  = median(hours by shop in train)
+    class_hours = median(hours by class_desc in train)
+    global_hours = median(hours in train)
+
+    # map aggregates with fallbacks
+    test.median_hours_code_past_v2 = map(code_hours) else map(class_hours) else global_hours
+    test.shop_hours_median_v2      = map(shop_hours) else global_hours
+    test.class_hours_median_v2     = map(class_hours) else global_hours
+
+    X_train = train[baseline_features]
+    y_train = log1p(train.cost)
+    fit model
+    preds = expm1(model.predict(test[baseline_features]))
+```
 
 ### Baseline v2 (expected cost)
 
@@ -78,6 +116,16 @@ recurrence = 1 if a matching failure signature occurs within 90 days of job star
 
 This label is computed only from data available after the repair window closes, and the world
 split ensures training rows never include future test events.
+
+### Signature matching
+
+The signature is intentionally conservative:
+
+```text
+signature = (repair_code_lvl1, class_desc, shop_tier, diagnostic_flag)
+```
+
+This reduces false matches while keeping the label stable as text fields drift.
 
 ## Leakage safeguards
 

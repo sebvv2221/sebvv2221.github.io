@@ -30,6 +30,26 @@ bench = scores ⨝ base on record_id (one-to-one)
 
 Any overlap that breaks one-to-one mapping is treated as a data quality error, not a warning.
 
+### Pseudo-code (benchmark build)
+
+```text
+scores = read_parquet(recurrence_scores)
+base   = read_parquet(gold_data)
+
+base.record_id = make_record_id(base)
+validate_record_id(scores.record_id)
+validate_record_id(base.record_id)
+
+bench = merge(scores, base, on="record_id", validate="one_to_one")
+coverage_cost = mean(bench.log_cost not null)
+coverage_dur  = mean(bench.log_duration_hr not null)
+if coverage_cost < 0.98 or coverage_dur < 0.98: fail
+
+if jrc_proxy:
+    jrc = read_parquet(jrc_proxy)
+    bench = merge(bench, jrc, on="record_id", validate="one_to_one")
+```
+
 ## Coverage thresholds
 
 Metrics are only reported if coverage is high enough to be meaningful:
@@ -52,6 +72,16 @@ The suite runs per world:
 - **World B/C:** alternative temporal boundaries for robustness.
 
 This makes it explicit whether gains are due to leak-free generalization or data overlap.
+
+### Output artifacts
+
+```text
+reports/jrc_omi_comparison/
+  benchmark_slice__A_cold.parquet
+  benchmark_slice__A_cold.meta.json
+  ladder_results__A_cold.csv
+  performance_table__A_cold.csv
+```
 
 ## Why it matters
 
