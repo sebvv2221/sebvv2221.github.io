@@ -19,6 +19,18 @@ The index uses features that are available at prediction time:
 - Lag-safe aggregates computed only on past data.
 - Diagnostic flags derived from normalized repair descriptions.
 
+## Record identity
+
+Every row needs a deterministic key before any split logic. The pipeline builds a `record_id`
+from stable fields (VIN, job start/end, work order, repair code) and suffixes duplicates so the
+mapping remains one-to-one even when upstream IDs collide.
+
+```text
+record_id = sha256(vin|job_start|job_end|work_order|repair_code|dup_rank)
+```
+
+The duplicate rank is computed after stable sorting so the same input yields the same IDs.
+
 ## Rolling construction
 
 For each target year:
@@ -30,6 +42,51 @@ For each target year:
 
 This gives a clean, year-by-year view of performance and avoids future leakage. If a year does
 not meet minimum training size, it is skipped rather than padded.
+
+### Baseline v2 (expected cost)
+
+The baseline model is a rolling, lag-safe estimator that explains scale and removes trivial
+signals before recurrence modeling:
+
+```text
+expected_cost_v2 = expm1( f_theta( X_baseline ) )
+residual_log = log1p(cost) - log1p(expected_cost_v2)
+```
+
+`X_baseline` is built from lag-safe aggregates:
+
+```text
+median_hours_code_past_v2
+shop_hours_median_v2
+class_hours_median_v2
+vehicle_age
+shop_tier
+warranty_remaining_frac
+diagnostic_required
+```
+
+Aggregates are recomputed using only years < target_year. If a code or shop is unseen, the
+pipeline falls back to class-level medians, then to global medians.
+
+## Recurrence target
+
+The recurrence label is defined inside a rolling window:
+
+```text
+recurrence = 1 if a matching failure signature occurs within 90 days of job start
+```
+
+This label is computed only from data available after the repair window closes, and the world
+split ensures training rows never include future test events.
+
+## Leakage safeguards
+
+The pipeline enforces:
+
+- **Prediction time:** features built from job start, not job end.
+- **World definitions:** train years end before test years.
+- **VIN disjointness:** cold worlds remove vehicle overlap.
+- **Run hashing:** artifacts stored with content hashes and run metadata.
 
 ## Validation
 
