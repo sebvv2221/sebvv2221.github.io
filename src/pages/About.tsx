@@ -71,6 +71,13 @@ export default function About() {
               models with reproducible metadata.
             </p>
           </div>
+          <div className="card bg-card-alt p-5 text-sm text-muted">
+            <p className="text-ink">How I work</p>
+            <p className="mt-2">
+              Every run emits metadata, hashes, and run IDs so results can be reproduced and
+              traced back to the exact data window and configuration.
+            </p>
+          </div>
         </div>
         <div className="flex flex-col gap-4">
           <div>

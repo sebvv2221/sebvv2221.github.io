@@ -2,20 +2,20 @@
 slug: log-hygiene
 title: "Log Hygiene for Long-Running Models"
 date: "2025-12-05"
-summary: "Notes on keeping telemetry clean enough to trust recurrence signals over months."
+summary: "Keeping telemetry clean enough to trust recurrence signals across years of log drift."
 tags: ["ml", "systems", "telemetry"]
 ---
 
-Long-running models do not fail loudly; they fail quietly with subtle logging shifts.
+Long-running models do not fail loudly; they fail quietly with subtle logging shifts. In the JRC pipeline we treat log hygiene as first-class infrastructure.
 
 ## Three rules
 
-- **Stable identifiers:** every log line should anchor to a versioned signature.
-- **Bounded cardinality:** avoid unbounded string fields when you can hash.
-- **Timestamp sanity:** keep a monotonic clock and cross-check with server time.
+- **Stable identifiers:** every row needs a deterministic record ID. We hash VIN, dates, work order, and repair code to create reproducible keys.
+- **Bounded cardinality:** avoid unbounded text features when you can normalize, bucket, or hash.
+- **Timestamp sanity:** enforce monotonicity and double-check with job start and end fields.
 
 ## Quick checklist
 
-- Run a weekly histogram check on key fields.
-- Keep a data dictionary in the repo.
-- Version the schema and enforce diffs with CI.
+- Run weekly histogram checks on key fields and watch for drift.
+- Keep a data dictionary in the repo and track column contracts.
+- Store run metadata and content hashes alongside artifacts.

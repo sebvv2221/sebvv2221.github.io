@@ -29,6 +29,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <NavLink to="/about" className={navLinkClass}>
                   About
                 </NavLink>
+                <NavLink to="/cv" className={navLinkClass}>
+                  CV
+                </NavLink>
               </nav>
               <nav className="flex items-center gap-2" aria-label="Social links">
                 <a className="icon-button" href="mailto:seb.vv2221@gmail.com" aria-label="Email">

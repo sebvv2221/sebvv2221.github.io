@@ -84,6 +84,14 @@ export default function Home() {
               </p>
             </li>
           </ol>
+          <div className="mt-6">
+            <p className="kicker">Current questions</p>
+            <ul className="mt-3 grid gap-2 text-sm text-muted">
+              <li>How sensitive is recurrence risk to signature drift?</li>
+              <li>Which baseline features stay robust as shops change mix?</li>
+              <li>What is the smallest benchmark that still catches leakage?</li>
+            </ul>
+          </div>
         </div>
       </section>
       <section ref={notesRef} id="notes" className="flex flex-col gap-6">

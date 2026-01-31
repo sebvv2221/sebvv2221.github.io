@@ -2,7 +2,7 @@
 slug: world-a-cold-targets
 title: "World A Cold: Designing Leak-Safe 90-Day Recurrence Targets"
 date: "2026-02-01"
-summary: "Why we abandoned cost-based targets and moved to recurrence risk for real-world automotive logs."
+summary: "How we moved from cost-based targets to recurrence risk with strict time windows and VIN disjointness."
 tags: ["repairability", "recurrence", "ml"]
 ---
 
@@ -18,10 +18,14 @@ We moved to a 90-day recurrence window that measures if the same failure reappea
 
 ## Why it worked
 
-Recurrence aligns with repairability. It captures whether a fix is durable, and it provides a clean gradient for experimentation.
+Recurrence aligns with repairability. It captures whether a fix is durable, and it provides a clean gradient for experimentation. The key was enforcing leak-safe world splits:
+
+- **Time ordering:** training data ends before the test year.
+- **VIN disjointness:** cold worlds ensure test vehicles never appear in training.
+- **Prediction time:** the pipeline anchors on job start, not job end, so features are truly ex-ante.
 
 ```text
 recurrence_risk = failures_with_repeat / total_failures
 ```
 
-The best part: this metric is robust to noisy price models and still rewards root-cause fixes.
+The best part: this metric is robust to noisy price models and still rewards root-cause fixes. It also scales cleanly into a recurrence index, where scores can be compared to proxy baselines and calibrated per world.
