@@ -1,61 +1,52 @@
 # Curriculum Vitae
 
 Sebastian Vo  
-(203) 435-3276 | [seb.vv2221@gmail.com](mailto:seb.vv2221@gmail.com) | [linkedin.com/in/sebvv2221](https://linkedin.com/in/sebvv2221) | [github.com/sebvv2221](https://github.com/sebvv2221)
+Gainesville, FL | (203) 435-3276 | [vvo1@ufl.edu](mailto:vvo1@ufl.edu) | [github.com/sebvv2221](https://github.com/sebvv2221)
 
 ## Education
 
-University of Florida, Gainesville, FL  
-Bachelor of Science in Computer Science and Statistics
-Expected April 2027  
-Relevant Coursework: Computer Systems and Systems Programming, Data Structures and Algorithms,
-Operating Systems, Databases, Distributed Systems, Computer Networks (ongoing)
+**University of Florida** — Gainesville, FL  
+**Bachelor of Science in Statistics** | Expected April 2027
 
-## Skills
+## Technical Skills
 
-- Languages: C++, Rust, Go, C, Python, SQL, ARM and x86 assembly
-- Systems & Networking: Linux, POSIX APIs, multithreading (threads, mutexes, condition variables),
-  socket programming (TCP/UDP), HTTP/REST, basic performance profiling
-- Distributed Systems & Data: replication and sharding, leader-follower architectures, Raft-style
-  consensus, message queues and pub/sub, caching, relational schema design and indexing,
-  NoSQL/key-value stores
-- Frameworks and Developer Tools: Git, Docker, gdb/lldb, CMake, clang-tidy/clang-format,
-  unit testing (gtest, Python test frameworks), VS Code, PyTorch, NumPy, pandas, matplotlib, LaTeX
+- **Programming and tools:** Python, SQL, C++, PyTorch, NumPy, pandas, matplotlib, Git, Linux, LaTeX.
+- **Research and analysis:** Regression, statistical modeling, machine learning, data cleaning, model validation, data visualization, and reproducible analysis.
 
-## Experience & Technical Projects
+## Research Experience
 
-GetCot Lab, University of Florida — Gainesville, FL  
-June 2025 – Present  
+### GetCot Lab, University of Florida
+*Undergraduate Research Assistant | June 2025–Present*
 
-Applied ML for Evaluation of Repairability Metrics (June 2025 – August 2026)  
-- Built Python pipelines to clean and join >1M automotive service records with vehicle metadata,
-  producing leak-safe feature sets for modeling repair outcomes
-- Trained gradient-boosted trees and neural networks to benchmark expert-crafted repairability
-  indices against data-driven 90-day recurrence risk models
-- Used SHAP values and targeted ablation studies to interpret model behavior and identify which
-  design attributes most strongly predict recurrence
-- Authored conference paper; structured code into reproducible modules and notebooks using git
-  and Make-style runners
+**Current research: Machine Learning Target-Validity Auditing Under Regime Shift**  
+*Coauthored manuscript in preparation | [Research code](https://github.com/sebvv2221/jrc-env-project)*
 
-RepLog: Data Evaluation System for ML applications (March 2026 – Present)  
-- Building RepLog, a C++ library and CLI that ingests normalized automotive repair logs, builds
-  per-vehicle event sequences, and emits labeled cut-points for tasks like 90-day recurrence prediction
-- Implemented time-windowed feature extraction (counts, costs, components, shop visits, etc.) that
-  uses only information available before each cut, plus regime / world tags to support policy-period
-  train/val/test splits
-- Added structural leak checks and invariants to prevent future events or ex-post outcome fields
-  (e.g., warranty flags, rework labels) from entering the feature set
-- Exported leak-safe design matrices to CSV and integrated them with existing Python modeling code
-  for tabular and sequence baselines
+- Analyzed **10,209 automotive maintenance records (2013–2023)** to assess whether repair cost, service duration, and recurrence are reliable modeling targets.
+- Developed a five-check target-validity audit that identified a 2022 structural break, including an approximately **92% decline** in median recorded repair cost.
+- Constructed leakage-safe 90-day return-visit labels using vehicle histories, right-censoring checks, and time- and VIN-aware evaluation splits.
+- Evaluated gradient-boosted cost and duration models and logistic-regression recurrence models; assessed uncertainty using VIN-clustered bootstrap analyses.
+- Prepared figures, tables, and a coauthored research manuscript documenting findings, limitations, and implications for repairability measurement.
 
-Personal Project  
+**Project in development: LLM Agents for Sustainable Maintenance Decisions (LASMD)**  
+*Proposed to Professor Sara Behdad, October 2026 | Implementation planned for Spring 2027*
 
-AuroraKV: Distributed Key-Value Systems (May 2026 – Present)  
-- Implemented a sharded, replicated key-value store with a Rust core: per-shard Raft-style
-  consensus for linearizable single-key operations, static hash-based sharding, and a custom on-disk
-  B+Tree + WAL storage engine with crash recovery and snapshots
-- Added per-shard dynamic membership (Raft configuration changes) and an offline rebalance tool that
-  moves key ranges and applies updated cluster configs, enabling operator-driven scaling and repair
-- Built a Go-based client, load generator, chaos harness, and linearizability/fuzz-testing framework
-  that spin up multi-node clusters in Docker, inject crashes and network partitions, and validate
-  AuroraKV's consistency and performance under failure
+- Proposed an LLM-agent study using historical automotive repair logs to compare heuristic, single-agent, and multi-agent maintenance decisions.
+- Outlined an offline evaluation framework covering repair cost, recurrence risk, environmental impact, and robustness. **Implementation and experiments have not yet begun.**
+
+## Leadership and Community Experience
+
+### Khanh's Story Service Project — Binh Dinh, Vietnam
+*Co-founder and Chief Operating Officer | August 2020–April 2024*
+
+- Co-developed an app providing women with job and scholarship information; coordinated workshops and outreach with local organizations.
+- Helped more than 30 women in the community secure employment opportunities or educational scholarships.
+
+### S.O.S. Project — Binh Dinh, Vietnam
+*Program Manager | August 2019–December 2022*
+
+- Recruited, interviewed, and trained volunteers; supported community events and established volunteer policies and guidelines.
+
+### St. John's College — Annapolis, MD
+*Volunteer Tutor | August 2019–December 2022*
+
+- Created individualized lesson plans and provided targeted academic support to students with diverse needs.

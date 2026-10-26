@@ -556,62 +556,53 @@ ${t}</tr>
 Please report this to https://github.com/markedjs/marked.`,t){const l="<p>An error occurred:</p><pre>"+we(r.message+"",!0)+"</pre>";return n?Promise.resolve(l):l}if(n)return Promise.reject(r);throw r}};const Wt=new Ag;function O(e,t){return Wt.parse(e,t)}O.options=O.setOptions=function(e){return Wt.setOptions(e),O.defaults=Wt.defaults,Dd(O.defaults),O};O.getDefaults=Rs;O.defaults=Kt;O.use=function(...e){return Wt.use(...e),O.defaults=Wt.defaults,Dd(O.defaults),O};O.walkTokens=function(e,t){return Wt.walkTokens(e,t)};O.parseInline=Wt.parseInline;O.Parser=be;O.parser=be.parse;O.Renderer=Ol;O.TextRenderer=$s;O.Lexer=Ve;O.lexer=Ve.lex;O.Tokenizer=Il;O.Hooks=qn;O.parse=O;O.options;O.setOptions;O.use;O.walkTokens;O.parseInline;be.parse;Ve.lex;O.setOptions({gfm:!0,breaks:!1,mangle:!1,headerIds:!1});const Zd=e=>O.parse(e);function Xd(){return Er({title:"Not found"}),g.jsxs("section",{className:"card flex flex-col items-center gap-4 p-10 text-center",children:[g.jsx("p",{className:"text-5xl font-display",children:"404"}),g.jsx("h1",{className:"font-display text-2xl",children:"Page not found"}),g.jsx("p",{className:"text-sm text-muted",children:"The page you are looking for does not exist."}),g.jsx($t,{to:"/",className:"btn btn-primary",children:"Back to home"})]})}function Fg(){const{slug:e}=im(),t=e?qm(e):void 0;return Er({title:(t==null?void 0:t.title)??"Not found"}),t?g.jsxs("article",{className:"card mx-auto w-full max-w-4xl p-8 md:p-10",children:[g.jsxs("div",{className:"flex flex-col gap-4",children:[g.jsx("p",{className:"text-xs uppercase tracking-[0.2em] text-muted",children:Ps(t.date)}),g.jsx("h1",{className:"font-display text-4xl text-ink md:text-5xl",children:t.title}),t.tags&&t.tags.length>0?g.jsx("div",{className:"flex flex-wrap gap-2",children:t.tags.map(n=>g.jsx("span",{className:"pill",children:n},n))}):null]}),g.jsx("div",{className:"markdown mt-8",dangerouslySetInnerHTML:{__html:Zd(t.body)}})]}):g.jsx(Xd,{})}const Ug=`# Curriculum Vitae
 
 Sebastian Vo  
-(203) 435-3276 | [seb.vv2221@gmail.com](mailto:seb.vv2221@gmail.com) | [linkedin.com/in/sebvv2221](https://linkedin.com/in/sebvv2221) | [github.com/sebvv2221](https://github.com/sebvv2221)
+Gainesville, FL | (203) 435-3276 | [vvo1@ufl.edu](mailto:vvo1@ufl.edu) | [github.com/sebvv2221](https://github.com/sebvv2221)
 
 ## Education
 
-University of Florida, Gainesville, FL  
-Bachelor of Science in Computer Science and Statistics
-Expected April 2027  
-Relevant Coursework: Computer Systems and Systems Programming, Data Structures and Algorithms,
-Operating Systems, Databases, Distributed Systems, Computer Networks (ongoing)
+**University of Florida** — Gainesville, FL  
+**Bachelor of Science in Statistics** | Expected April 2027
 
-## Skills
+## Technical Skills
 
-- Languages: C++, Rust, Go, C, Python, SQL, ARM and x86 assembly
-- Systems & Networking: Linux, POSIX APIs, multithreading (threads, mutexes, condition variables),
-  socket programming (TCP/UDP), HTTP/REST, basic performance profiling
-- Distributed Systems & Data: replication and sharding, leader-follower architectures, Raft-style
-  consensus, message queues and pub/sub, caching, relational schema design and indexing,
-  NoSQL/key-value stores
-- Frameworks and Developer Tools: Git, Docker, gdb/lldb, CMake, clang-tidy/clang-format,
-  unit testing (gtest, Python test frameworks), VS Code, PyTorch, NumPy, pandas, matplotlib, LaTeX
+- **Programming and tools:** Python, SQL, C++, PyTorch, NumPy, pandas, matplotlib, Git, Linux, LaTeX.
+- **Research and analysis:** Regression, statistical modeling, machine learning, data cleaning, model validation, data visualization, and reproducible analysis.
 
-## Experience & Technical Projects
+## Research Experience
 
-GetCot Lab, University of Florida — Gainesville, FL  
-June 2025 – Present  
+### GetCot Lab, University of Florida
+*Undergraduate Research Assistant | June 2025–Present*
 
-Applied ML for Evaluation of Repairability Metrics (June 2025 – August 2026)  
-- Built Python pipelines to clean and join >1M automotive service records with vehicle metadata,
-  producing leak-safe feature sets for modeling repair outcomes
-- Trained gradient-boosted trees and neural networks to benchmark expert-crafted repairability
-  indices against data-driven 90-day recurrence risk models
-- Used SHAP values and targeted ablation studies to interpret model behavior and identify which
-  design attributes most strongly predict recurrence
-- Authored conference paper; structured code into reproducible modules and notebooks using git
-  and Make-style runners
+**Current research: Machine Learning Target-Validity Auditing Under Regime Shift**  
+*Coauthored manuscript in preparation | [Research code](https://github.com/sebvv2221/jrc-env-project)*
 
-RepLog: Data Evaluation System for ML applications (March 2026 – Present)  
-- Building RepLog, a C++ library and CLI that ingests normalized automotive repair logs, builds
-  per-vehicle event sequences, and emits labeled cut-points for tasks like 90-day recurrence prediction
-- Implemented time-windowed feature extraction (counts, costs, components, shop visits, etc.) that
-  uses only information available before each cut, plus regime / world tags to support policy-period
-  train/val/test splits
-- Added structural leak checks and invariants to prevent future events or ex-post outcome fields
-  (e.g., warranty flags, rework labels) from entering the feature set
-- Exported leak-safe design matrices to CSV and integrated them with existing Python modeling code
-  for tabular and sequence baselines
+- Analyzed **10,209 automotive maintenance records (2013–2023)** to assess whether repair cost, service duration, and recurrence are reliable modeling targets.
+- Developed a five-check target-validity audit that identified a 2022 structural break, including an approximately **92% decline** in median recorded repair cost.
+- Constructed leakage-safe 90-day return-visit labels using vehicle histories, right-censoring checks, and time- and VIN-aware evaluation splits.
+- Evaluated gradient-boosted cost and duration models and logistic-regression recurrence models; assessed uncertainty using VIN-clustered bootstrap analyses.
+- Prepared figures, tables, and a coauthored research manuscript documenting findings, limitations, and implications for repairability measurement.
 
-Personal Project  
+**Project in development: LLM Agents for Sustainable Maintenance Decisions (LASMD)**  
+*Proposed to Professor Sara Behdad, October 2026 | Implementation planned for Spring 2027*
 
-AuroraKV: Distributed Key-Value Systems (May 2026 – Present)  
-- Implemented a sharded, replicated key-value store with a Rust core: per-shard Raft-style
-  consensus for linearizable single-key operations, static hash-based sharding, and a custom on-disk
-  B+Tree + WAL storage engine with crash recovery and snapshots
-- Added per-shard dynamic membership (Raft configuration changes) and an offline rebalance tool that
-  moves key ranges and applies updated cluster configs, enabling operator-driven scaling and repair
-- Built a Go-based client, load generator, chaos harness, and linearizability/fuzz-testing framework
-  that spin up multi-node clusters in Docker, inject crashes and network partitions, and validate
-  AuroraKV's consistency and performance under failure
+- Proposed an LLM-agent study using historical automotive repair logs to compare heuristic, single-agent, and multi-agent maintenance decisions.
+- Outlined an offline evaluation framework covering repair cost, recurrence risk, environmental impact, and robustness. **Implementation and experiments have not yet begun.**
+
+## Leadership and Community Experience
+
+### Khanh's Story Service Project — Binh Dinh, Vietnam
+*Co-founder and Chief Operating Officer | August 2020–April 2024*
+
+- Co-developed an app providing women with job and scholarship information; coordinated workshops and outreach with local organizations.
+- Helped more than 30 women in the community secure employment opportunities or educational scholarships.
+
+### S.O.S. Project — Binh Dinh, Vietnam
+*Program Manager | August 2019–December 2022*
+
+- Recruited, interviewed, and trained volunteers; supported community events and established volunteer policies and guidelines.
+
+### St. John's College — Annapolis, MD
+*Volunteer Tutor | August 2019–December 2022*
+
+- Created individualized lesson plans and provided targeted academic support to students with diverse needs.
 `;function Bg(){return Er({title:"CV",noindex:!0}),g.jsx("article",{className:"card mx-auto w-full max-w-4xl p-8 md:p-10",children:g.jsx("div",{className:"markdown",dangerouslySetInnerHTML:{__html:Zd(Ug)}})})}function Wg(){return g.jsxs(Fm,{children:[g.jsx(Um,{}),g.jsxs(wm,{children:[g.jsx(Xt,{path:"/",element:g.jsx(tg,{})}),g.jsx(Xt,{path:"/about",element:g.jsx(rg,{})}),g.jsx(Xt,{path:"/posts/:slug",element:g.jsx(Fg,{})}),g.jsx(Xt,{path:"/cv",element:g.jsx(Bg,{})}),g.jsx(Xt,{path:"*",element:g.jsx(Xd,{})})]})]})}Oi.createRoot(document.getElementById("root")).render(g.jsx(xu.StrictMode,{children:g.jsx($m,{children:g.jsx(Pm,{children:g.jsx(Wg,{})})})}));
